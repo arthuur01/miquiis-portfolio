@@ -3,8 +3,12 @@
 import gsap from "gsap";
 import { useState, useRef, useEffect } from "react";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 gsap.registerPlugin(DrawSVGPlugin);
+
+NProgress.configure({ showSpinner: false });
 
 export default function LoadingScreen({children}: {children: React.ReactNode}){
   const [isLoading, setLoading] = useState(true);
@@ -17,12 +21,22 @@ export default function LoadingScreen({children}: {children: React.ReactNode}){
   const bottomHalfRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    NProgress.start();
+    
     const id = setInterval(() => {
       setN((v) => (v >= 100 ? 100 : v + 1));
-    }, 30); 
+    }, 40); 
 
     return () => clearInterval(id);
   }, []);
+
+  useEffect(() => {
+    NProgress.set(n / 100);
+    
+    if (n === 100) {
+      NProgress.done();
+    }
+  }, [n]);
 
   useEffect(() => {
     if (n === 100) {
@@ -44,7 +58,7 @@ export default function LoadingScreen({children}: {children: React.ReactNode}){
         setLoading(false);
       });
     }
-  }, [n]);
+  }, [n]); 
 
   return(
     <>
@@ -54,8 +68,13 @@ export default function LoadingScreen({children}: {children: React.ReactNode}){
             <div ref={topHalfRef} className="absolute top-0 left-0 w-full h-1/2 bg-neutral-950 z-10"></div>
             <div ref={bottomHalfRef} className="absolute bottom-0 left-0 w-full h-1/2 bg-neutral-950 z-10"></div>
             <div ref={contentRef} className="absolute inset-0 z-20 grid grid-rows-[auto_1fr_auto]">
-              <div>
-                <h1>Miquiis</h1>
+              <div className = "flex items-center h-screen">
+                <div className="flex justify-between w-screen">
+                    <span ref={spanRef} className="flex text-[300px] font-array text-samurai-red-800 pt-70 pl-20 select-none animate-pulse"> &gt; </span>
+                    <div className="flex pr-10 flex-col gap-0">
+                      <span ref={spanRef} className=" text-[300px] font-striper text-samurai-red-800 "> {n}% </span>
+                    </div>
+                </div>
               </div>
             </div>
           </div>

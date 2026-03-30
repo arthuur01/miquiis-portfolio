@@ -1,13 +1,34 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Striper';
+  src: url('/fonts/Striper-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Array';
+  src: url('/fonts/Array-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
 :root {
-  --background: #ffffff;
+  --background: #121212;
   --foreground: #171717;
   --samurai-red-700: #C0301E;
   --samurai-red-600: #db3b27;
   --samurai-red-800: #982a1c;
   --samurai-red-900: #7f281d;
   --samurai-red-950: #45110a;
+  --charcoal-black-700: #404040;
+  --charcoal-black-800: #272727;
+  --charcoal-black-900: #1A1A1A; 
+  --charcoal-black-950: #121212; 
 }
 
 @theme inline {
@@ -20,13 +41,30 @@
   --color-samurai-red-800: var(--samurai-red-800);
   --color-samurai-red-900: var(--samurai-red-900);
   --color-samurai-red-950: var(--samurai-red-950);
+  --color-charcoal-black-700: var(--charcoal-black-700);
+  --color-charcoal-black-800: var(--charcoal-black-800);
+  --color-charcoal-black-900: var(--charcoal-black-900);
+  --color-charcoal-black-950: var(--charcoal-black-950);
+
+  --font-striper: 'Striper', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-array: 'Array', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #121212;
     --foreground: #ededed;
   }
+}
+
+/* NProgress customização */
+#nprogress .bar {
+  background: var(--samurai-red-700) !important;
+  height: 3px !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--samurai-red-700), 0 0 5px var(--samurai-red-700) !important;
 }
 
 body {
@@ -37,6 +75,6 @@ body {
 }
 
 ::selection {
-  background-color: #b11616;
-  color: rgb(197, 192, 143);
+  background-color: #ee5a5a;
+  color: rgb(255, 255, 255);
 }
