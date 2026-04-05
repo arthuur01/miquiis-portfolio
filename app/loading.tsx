@@ -24,10 +24,19 @@ export default function LoadingScreen({children}: {children: React.ReactNode}){
     NProgress.start();
     
     const id = setInterval(() => {
-      setN((v) => (v >= 100 ? 100 : v + 1));
+      setN((v) => {
+        if (v >= 100) {
+          clearInterval(id);
+          return 100;
+        }
+        return v + 1;
+      });
     }, 40); 
 
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      NProgress.remove();
+    };
   }, []);
 
   useEffect(() => {
@@ -57,8 +66,12 @@ export default function LoadingScreen({children}: {children: React.ReactNode}){
       }, "<") .call(() => {
         setLoading(false);
       });
+
+      return () => {
+        tl.kill();
+      };
     }
-  }, [n]); 
+  }, [n]);
 
   return(
     <>

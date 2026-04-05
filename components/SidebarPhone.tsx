@@ -26,7 +26,12 @@ export default function Sidebar(){
         }).from(items,  {yPercent:50,
                 duration: 0.3,
                 stagger: 0.02,ease:"back.out"})
-    }}, []);
+    }
+
+    return () => {
+        tl.current?.kill();
+    };
+    }, []);
 
     const enterScreen = () => {
         tl.current?.play();

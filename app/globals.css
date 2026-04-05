@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
   font-family: 'Striper';
@@ -42,6 +42,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-rale: var(--font-raleway);
   --color-samurai-red-600: var(--samurai-red-600);
   --color-samurai-red-700: var(--samurai-red-700);
   --color-samurai-red-800: var(--samurai-red-800);

@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import gsap from 'gsap';
 import Link from "next/link";
+import Image from "next/image";
 import Sidebar from "./SidebarPhone";
 
 export default function Navbar(){
@@ -11,7 +10,7 @@ export default function Navbar(){
         <div>
           <div className="hidden lg:flex justify-center gap-140">
                 <div>
-                 <a href="/"><img className="w-20 cursor-pointer" src="/logo.png"/></a>
+                 <Link href="/"><Image className="w-20 cursor-pointer" src="/logo.png" alt="Logo" width={80} height={80}/></Link>
                 </div>
                 <div className="font-invasion text-xl  ">
                  <p className="hover:transition-colors hover:text-samurai-red-600 cursor-pointer">Works</p>
@@ -26,10 +25,9 @@ export default function Navbar(){
                  <p className="hover:transition-colors hover:text-samurai-red-600 cursor-pointer">Contact</p>
                 </div>
           </div>
-
            <div className="lg:hidden flex justify-between">
             <div className="ml-10">
-                <a href="/"><img className="w-15 cursor-pointer" src="/logo.png"/></a>
+                <Link href="/"><Image className="w-15 cursor-pointer" src="/logo.png" alt="Logo" width={60} height={60}/></Link>
             </div>
             <div className="mr-5 mt-3">
              <Sidebar/>
