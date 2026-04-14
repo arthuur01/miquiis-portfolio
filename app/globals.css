@@ -21,7 +21,13 @@
   font-style: normal;
   font-display: swap;
 }
-
+@font-face {
+  font-family: 'Charon';
+  src: url('/fonts/IosevkaCharon-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --background: #121212;
@@ -35,6 +41,7 @@
   --charcoal-black-800: #272727;
   --charcoal-black-900: #1A1A1A; 
   --charcoal-black-950: #121212; 
+  --gray-weak: #C7C7C7;
 }
 
 @theme inline {
@@ -52,10 +59,12 @@
   --color-charcoal-black-800: var(--charcoal-black-800);
   --color-charcoal-black-900: var(--charcoal-black-900);
   --color-charcoal-black-950: var(--charcoal-black-950);
-
+  --color-gray-weak: var(--gray-weak);
+  
   --font-striper: 'Striper', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-array: 'Array', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-invasion: 'Invasion', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-charon: 'Charon', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

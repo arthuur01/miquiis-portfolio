@@ -10,7 +10,7 @@ gsap.registerPlugin(DrawSVGPlugin);
 
 NProgress.configure({ showSpinner: false });
 
-export default function LoadingScreen({children}: {children: React.ReactNode}){
+export default function LoadingScreen({children, onLoadingComplete}: {children: React.ReactNode, onLoadingComplete?: () => void}){
   const [isLoading, setLoading] = useState(true);
   
   const [n, setN] = useState(0);
@@ -19,6 +19,25 @@ export default function LoadingScreen({children}: {children: React.ReactNode}){
   const contentRef = useRef<HTMLDivElement>(null);
   const topHalfRef = useRef<HTMLDivElement>(null);
   const bottomHalfRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
+    
+    // Disable scroll during loading
+    document.body.style.overflow = 'hidden';
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
+  useEffect(() => {
+    // Re-enable scroll when loading is complete
+    if (!isLoading) {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     NProgress.start();
@@ -65,6 +84,9 @@ export default function LoadingScreen({children}: {children: React.ReactNode}){
         ease: "power3.inOut"
       }, "<") .call(() => {
         setLoading(false);
+        if (onLoadingComplete) {
+          onLoadingComplete();
+        }
       });
 
       return () => {
