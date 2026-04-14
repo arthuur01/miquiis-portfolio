@@ -1,27 +1,6 @@
 @import 'tailwindcss';
 
 @font-face {
-  font-family: 'Striper';
-  src: url('/fonts/Striper-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Array';
-  src: url('/fonts/Array-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Invasion';
-  src: url('/fonts/INVASION2000.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
   font-family: 'Charon';
   src: url('/fonts/IosevkaCharon-Bold.ttf') format('truetype');
   font-weight: normal;
@@ -47,9 +26,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-rale: var(--font-raleway);
   --color-samurai-red-600: var(--samurai-red-600);
   --color-samurai-red-700: var(--samurai-red-700);
   --color-samurai-red-800: var(--samurai-red-800);
@@ -61,9 +37,6 @@
   --color-charcoal-black-950: var(--charcoal-black-950);
   --color-gray-weak: var(--gray-weak);
   
-  --font-striper: 'Striper', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-array: 'Array', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-invasion: 'Invasion', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-charon: 'Charon', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -74,7 +47,14 @@
   }
 }
 
-/* NProgress customização */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: url('/cursor.png') 12 12, auto;
+}
+
+
 #nprogress .bar {
   background: var(--samurai-red-700) !important;
   height: 3px !important;
@@ -82,13 +62,6 @@
 
 #nprogress .peg {
   box-shadow: 0 0 10px var(--samurai-red-700), 0 0 5px var(--samurai-red-700) !important;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  cursor: url('/cursor.png') 12 12, auto;
 }
 
 ::selection {
